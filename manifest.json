@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "AWS Console Spray",
+  "version": "0.0.1",
+  "description": "AWS Console Spray",
+  "icons": {
+    "64": "icon64.png"
+  },
+  "content_security_policy": "script-src 'self' https://stackpath.bootstrapcdn.com https://code.jquery.com https://cdnjs.cloudflare.com; object-src 'self'",
+  "browser_action": {
+    "default_icon": "icon64.png",
+    "default_popup": "uis/popup.html"
+  },
+  "background": {
+    "scripts": [
+      "scripts/background.js"
+    ],
+    "persistent": false
+  },
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://console.aws.amazon.com/*",
+        "https://*.console.aws.amazon.com/*"
+      ],
+      "js": ["scripts/jquery-3.4.0.slim.min.js", "scripts/contents.js"]
+    }
+  ]
+}
